@@ -1,0 +1,43 @@
+.contact-page {
+    min-height: 100vh;
+    padding: 80px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 40px;
+}
+
+.thanks-content h1 {
+    font-size: 28px;
+    color: #a78888;
+    margin-bottom: 50px;
+}
+
+.thanks-button {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    background-color: #a78888;
+    color: #fff;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 1px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background-color: #fff;
+    color: #a78888;
+    border: 2px solid #a78888;
+}

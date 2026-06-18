@@ -1,0 +1,203 @@
+/* ========================
+お問い合わせ入力画面用CSS
+   ======================== */
+
+.contact-page {
+    color: #a78888;
+}
+
+.contact-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 50px 40px;
+}
+
+/* ヘッダー部分 */
+.contact-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.contact-header h1 {
+    font-size: 36px;
+    font-weight: 400;
+}
+
+/* エラーメッセージを入力欄の上に強く重ねて表示 */
+.field-error {
+    color: #e63939;
+    font-size: 18px;
+    font-weight: 700;
+    position: absolute;
+    top: 100%;
+    left: 33%;
+    z-index: 25px;
+    white-space: nowrap;
+}
+
+.is-invalid {
+    border: 1px solid #e63939 !important;
+}
+
+/* フォームグループを基準位置にする */
+.form-group {
+    margin-bottom: 32px;
+    /* エラーメッセージ分の余白 */
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    position: relative;
+    /* 絶対位置の基準にする */
+}
+
+.required {
+    color: #f87171;
+    margin-left: 4px;
+}
+
+.form-group label {
+    width: 30%;
+    flex-shrink: 0;
+    font-weight: 600;
+    margin-top: 8px;
+    font-size: 20px;
+}
+
+/* 入力フィールド */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea,
+.form-group select {
+    flex: 1;
+    padding: 14px 16px;
+    border: none;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    font-size: 16px;
+    color: black;
+}
+
+/* お問い合わせ種別（select）の文字色 */
+.form-group select {
+    color: black;
+    /* 選択された文字の色 */
+    background-color: #f5f5f5;
+}
+
+/* optionの文字色も統一 */
+.form-group select option {
+    color: #333333;
+    /* option一覧は黒のまま（見やすいため） */
+}
+
+/* 選択時の強調 */
+.form-group select:focus {
+    color: black;
+}
+
+/* 複数入力用のラッパー */
+.name-fields,
+.tel-group {
+    flex: 1;
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+}
+
+.name-input {
+    flex: 1;
+}
+
+.name-input input {
+    width: 100%;
+}
+
+.tel-group input {
+    width: 110px;
+    text-align: center;
+}
+
+.tel-separator {
+    font-size: 30px;
+    color: #555555;
+    font-weight: 200;
+    position: relative;
+    color: #555555;
+    top: 5px;
+    user-select: none;
+}
+
+/* 性別 */
+.radio-group {
+    flex: 1;
+    display: flex;
+    align-items: left;
+    padding-top: 6px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: left;
+    gap: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.radio-label input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0;
+    vertical-align: middle;
+    position: relative;
+    top: 3px;
+}
+
+.radio-label input[type="radio"]:checked {
+    background-color: #a78888;
+    border-color: #a78888;
+}
+
+/* 送信ボタン */
+.submit-area {
+    margin: 40px auto 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.submit-button {
+    background-color: #a78888;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 16px 60px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+    max-width: 320px;
+}
+
+.submit-button:hover {
+    background-color: #fff;
+    color: #a78888;
+    border: 2px solid #a78888;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .form-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-group label {
+        width: auto;
+        margin-top: 0;
+    }
+}

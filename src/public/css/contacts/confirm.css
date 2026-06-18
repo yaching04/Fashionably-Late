@@ -1,0 +1,138 @@
+/* ========================
+お問い合わせ確認画面用CSS
+   ======================== */
+
+.contact-page {
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #a78888;
+}
+
+.contact-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 50px 40px;
+}
+
+/* ヘッダー */
+.contact-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.contact-header h1 {
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.contact-header p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* 確認内容表示エリア */
+.confirm-content {
+    border: 1px solid #eeeeee;
+    border-radius: 1px;
+
+}
+
+.confirm-row {
+    display: flex;
+    align-items: stretch;;
+    gap: 50px;
+    min-height: 70px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+.confirm-label {
+    width: 200px;
+    height: auto;
+    font-weight: 600;
+    background-color: #a78888;
+    color: #fff;
+    padding: 23px 30px;
+    align-items: center;
+    display: flex;
+}
+
+.confirm-value {
+    flex: 1;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    margin: auto;
+}
+
+/* お問い合わせ内容の詳細部分 */
+.confirm-detail {
+    white-space: pre-line;
+    word-break: break-all;
+}
+
+/* ボタンエリア */
+.confirm-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.btn {
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.button {
+    padding: 14px 40px;
+}
+
+.btn-secondary {
+    padding: 0;
+    background-color: #fff;
+    color: #a78888;
+    border-bottom: 2px solid #a78888;
+}
+
+.btn-secondary:hover {
+    background-color: #f8f9fa;
+}
+
+.btn-primary {
+    padding: 14px 40px;
+    background-color: #a78888;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #8f6f6f;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .confirm-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .confirm-label {
+        width: auto;
+    }
+
+    .confirm-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}

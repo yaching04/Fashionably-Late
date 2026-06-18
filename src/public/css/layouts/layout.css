@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #a78888;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+
+
+.header {
+    background-color: #fff;
+    border-bottom: 1px solid #dddddd;
+    position: relative;
+}
+
+.header__inner {
+    max-width: 1580px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* 左右配置を強制 */
+    position: relative;
+    min-height: 80px;
+}
+
+.logo {
+    font-size: 36px;
+    font-weight: 400;
+    color: #a78888;
+    text-decoration: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.auth-links {
+    display: flex;
+    align-items: center;
+    z-index: 20;
+    margin-left: auto;
+    /* 右寄せを強制 */
+}
+
+.login-btn {
+    padding: 10px 28px;
+    border: 2px solid #a78888;
+    color: #a78888;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.login-btn:hover {
+    background-color: #a78888;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .header__inner {
+        padding: 16px 20px;
+    }
+
+    .logo {
+        font-size: 28px;
+    }
+
+    .login-btn {
+        margin-right: 4%;
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .header__inner {
+        padding: 20px 10px;
+    }
+
+    .logo {
+        font-size: 36px;
+    }
+
+    .login-btn {
+        margin-right: 0%;
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+}

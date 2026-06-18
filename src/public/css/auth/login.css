@@ -1,0 +1,118 @@
+/* ========================
+ログイン画面用CSS
+   ======================== */
+
+.contact-page {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ヘッダー */
+.contact-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.contact-header h1 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+
+
+.contact-form {
+    background-color: #ffffff;
+    padding: 60px 120px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* フォーム */
+.form-group {
+    margin: 60px auto;
+}
+
+.form-group label {
+    display: block;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.required {
+    color: #e63939;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #a78888;
+    box-shadow: 0 0 0 3px rgba(167, 136, 136, 0.1);
+}
+
+/* 送信ボタン */
+.submit-area {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.submit-button {
+    background-color: #a78888;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 16px 60px;
+    border: none;
+    border-radius: 1px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+}
+
+.submit-button:hover {
+    background-color: #8f6f6f;
+}
+
+.field-error {
+    color: #e63939;
+    font-size: 14px;
+    margin-bottom: 8px;
+    padding-left: 4px;
+    font-weight: 500;
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-4px);
+    }
+    75% {
+        transform: translateX(4px);
+    }
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 40px 25px;
+    }
+}
