@@ -62,5 +62,7 @@
 - **Migration & Seeder** (DB初期化)
 - **Git** (バージョン管理)
 
+## ER図
+<img width="623" height="694" alt="Screenshot 2026-07-01 144551" src="https://github.com/user-attachments/assets/e2d9f02f-e6d6-4f97-9e48-2b386809f184" />
 
 
