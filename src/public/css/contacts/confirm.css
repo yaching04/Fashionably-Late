@@ -69,8 +69,12 @@
 
 /* お問い合わせ内容の詳細部分 */
 .confirm-detail {
-    white-space: pre-line;
-    word-break: break-all;
+    flex: 1;
+    display: block;
+    padding: 20px 0;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: normal;
 }
 
 /* ボタンエリア */

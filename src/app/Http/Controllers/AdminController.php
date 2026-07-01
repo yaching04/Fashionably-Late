@@ -25,8 +25,8 @@ class AdminController extends Controller
             $search = request('search');
             $query->where(function($q) use ($search) {
                 $q->where('first_name', 'like', "%{$search}%")
-                  ->orWhere('last_name', 'like', "%{$search}%")
-                  ->orWhere('email', 'like', "%{$search}%");
+                ->orWhere('last_name', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%");
             });
         }
 
@@ -49,15 +49,30 @@ class AdminController extends Controller
         return view('admins.admin', compact('contacts', 'categories'));
     }
 
-        /**
+    /**
      * お問い合わせ詳細（モーダル用）
      */
     public function show(Contact $contact)
     {
         $contact->load('category');
 
-        // モーダル用にHTMLを返す
-        return view('admins.show', compact('contact'));
+        // モーダル用にJSONを返す
+        return response()->json([
+            'first_name' => $contact->first_name,
+            'last_name' => $contact->last_name,
+            'gender' => match($contact->gender) {
+                1 => '男性',
+                2 => '女性',
+                3 => 'その他',
+                default => '不明'
+            },
+            'email' => $contact->email,
+            'tel' => $contact->tel,
+            'address' => $contact->address,
+            'building' => $contact->building ?? 'なし',
+            'category' => $contact->category->content ?? '未分類',
+            'detail' => $contact->detail,
+        ]);
     }
 
     /**

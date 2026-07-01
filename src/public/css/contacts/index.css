@@ -1,7 +1,8 @@
 /* ========================
-お問い合わせ入力画面用CSS
+   お問い合わせ入力画面用CSS
    ======================== */
 
+/* 全体レイアウト */
 .contact-page {
     color: #a78888;
 }
@@ -13,7 +14,7 @@
     padding: 50px 40px;
 }
 
-/* ヘッダー部分 */
+/* ヘッダー */
 .contact-header {
     text-align: center;
     margin-bottom: 40px;
@@ -24,7 +25,7 @@
     font-weight: 400;
 }
 
-/* エラーメッセージを入力欄の上に強く重ねて表示 */
+/* エラーメッセージ */
 .field-error {
     color: #e63939;
     font-size: 18px;
@@ -40,20 +41,20 @@
     border: 1px solid #e63939 !important;
 }
 
-/* フォームグループを基準位置にする */
+.name-error {
+    color: #e63939;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+/* フォームグループ */
 .form-group {
     margin-bottom: 32px;
-    /* エラーメッセージ分の余白 */
     display: flex;
     align-items: flex-start;
     gap: 20px;
     position: relative;
-    /* 絶対位置の基準にする */
-}
-
-.required {
-    color: #f87171;
-    margin-left: 4px;
 }
 
 .form-group label {
@@ -62,6 +63,11 @@
     font-weight: 600;
     margin-top: 8px;
     font-size: 20px;
+}
+
+.required {
+    color: #f87171;
+    margin-left: 4px;
 }
 
 /* 入力フィールド */
@@ -78,25 +84,17 @@
     color: black;
 }
 
-/* お問い合わせ種別（select）の文字色 */
+/* お問い合わせ種別 */
 .form-group select {
     color: black;
-    /* 選択された文字の色 */
     background-color: #f5f5f5;
 }
 
-/* optionの文字色も統一 */
 .form-group select option {
     color: #333333;
-    /* option一覧は黒のまま（見やすいため） */
 }
 
-/* 選択時の強調 */
-.form-group select:focus {
-    color: black;
-}
-
-/* 複数入力用のラッパー */
+/* 複数入力（氏名・電話番号） */
 .name-fields,
 .tel-group {
     flex: 1;
@@ -123,7 +121,6 @@
     color: #555555;
     font-weight: 200;
     position: relative;
-    color: #555555;
     top: 5px;
     user-select: none;
 }
@@ -199,5 +196,53 @@
     .form-group label {
         width: auto;
         margin-top: 0;
+    }
+
+    .name-fields,
+    .tel-group {
+        gap: 15px;
+    }
+
+    .tel-group input {
+        width: 80px;
+    }
+}
+
+/* スマホサイズ（より細かい調整） */
+@media (max-width: 480px) {
+
+.content-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+.contact-container {
+        padding: 30px 20px;
+        margin: 0 auto;
+        max-width: 95%;
+    }
+
+.contact-header h1 {
+        font-size: 28px;
+    }
+
+.form-group {
+    margin: 0 auto 20px;
+    text-align: center;
+}
+
+.form-group label {
+        font-size: 18px;
+    }
+
+.detail {
+        width: 100%;
+    }
+
+.submit-button {
+        padding: 14px 40px;
+        font-size: 16px;
+        text-align: center;
     }
 }

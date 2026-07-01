@@ -26,13 +26,28 @@
 }
 
 /* エラーメッセージ */
-.error-messages {
-    background-color: #fee2e2;
-    border: 1px solid #f87171;
-    color: #b91c1c;
-    padding: 16px;
-    border-radius: 8px;
-    margin-bottom: 30px;
+.field-error {
+    color: #e63939;
+    font-size: 16px;
+    padding-left: 4px;
+    font-weight: 500;
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-4px);
+    }
+
+    75% {
+        transform: translateX(4px);
+    }
 }
 
 .contact-form {

@@ -23,6 +23,15 @@ class CreateNewUser implements CreatesNewUsers
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
+        ], [
+            'name.required' => '・お名前を入力してください',
+            'email.required' => '・メールアドレスを入力してください',
+            'email.email' => '・メールアドレスはメール形式で入力してください',
+            'password.required' => '・パスワードを入力してください',
+        ], [
+            'name' => 'お名前',
+            'email' => 'メールアドレス',
+            'password' => 'パスワード',
         ])->validate();
 
         return User::create([

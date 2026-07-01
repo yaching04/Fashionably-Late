@@ -90,8 +90,7 @@
 
 .field-error {
     color: #e63939;
-    font-size: 14px;
-    margin-bottom: 8px;
+    font-size: 16px;
     padding-left: 4px;
     font-weight: 500;
     animation: shake 0.3s;

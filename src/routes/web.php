@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Fortifyの認証ルートを有効化（ここに追加！）
-require __DIR__.'/auth.php';
+// Fortifyの認証ルートを有効化
+Route::prefix('admin')->name('admin.')->group(function () {
+    require __DIR__.'/auth.php';
+});
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
@@ -41,20 +43,6 @@ Route::prefix('contacts')->name('contacts.')->group(function () {
 });
 
 // ==================== 認証関連（Fortify使用） ====================
-
-// Fortifyの認証ルートを有効化
-Route::prefix('admin')->name('admin.')->group(function () {
-    // ログイン画面
-    Route::get('/login', function () {
-        return view('auth.login');
-    })->name('login');
-
-    // ログアウト
-    Route::post('/logout', function () {
-        auth()->logout();
-        return redirect()->route('admin.login');
-    })->name('logout');
-});
 
 // ==================== 管理画面（ログイン必須） ====================
 

@@ -66,8 +66,8 @@
 
             <div class="confirm-row">
                 <div class="confirm-label">お問い合わせ内容</div>
-                <div class="confirm-value confirm-detail">
-                    {!! nl2br(e(trim($validated['detail'] ?? ''))) !!}
+                <div class="confirm-detail">
+                    {{ trim($validated['detail'] ?? '') }}
                 </div>
             </div>
         </div>

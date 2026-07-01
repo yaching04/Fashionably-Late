@@ -251,38 +251,6 @@
     z-index: 2000;
 }
 
-.modal-content {
-    background: white;
-    width: 90%;
-    max-width: 700px;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.modal-header {
-    padding: 20px 25px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.close-btn {
-    font-size: 30px;
-    cursor: pointer;
-    color: #999;
-}
-
-.close-btn:hover {
-    color: #e63939;
-}
-
-.modal-body {
-    padding: 30px;
-    max-height: 75vh;
-    overflow-y: auto;
-}
-
 /* レスポンシブ */
 @media (max-width: 768px) {
     .search-row {
@@ -299,51 +267,5 @@
 
 
 
-/* ========================
-モーダル（強制表示）
-   ======================== */
 
-.modal {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background-color: rgba(0, 0, 0, 0.85) !important;
-    z-index: 99999 !important;
-    display: none !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
-
-.modal-content {
-    width: 90% !important;
-    max-width: 720px !important;
-    border-radius: 12px !important;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
-    overflow: hidden !important;
-    max-height: 92vh !important;
-}
-
-.modal-header {
-    padding: 20px 25px !important;
-    border-bottom: 1px solid #eee !important;
-    display: flex !important;
-    justify-content: space-between !important;
-}
-
-.close-btn {
-    font-size: 32px !important;
-    cursor: pointer !important;
-    color: #999 !important;
-}
-
-.close-btn:hover {
-    color: #e63939 !important;
-}
-
-.modal-body {
-    padding: 30px !important;
-    overflow-y: auto !important;
-}
 
