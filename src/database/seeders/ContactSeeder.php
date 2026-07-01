@@ -64,11 +64,11 @@ class ContactSeeder extends Seeder
             ],
         ];
 
-        // 追加のダミーデータ（20件くらい）
+        // 追加のダミーデータ（32件）
         $firstNames = ['山田', '佐藤', '鈴木', '田中', '高橋', '伊藤', '渡辺', '中村'];
         $lastNames = ['太郎', '花子', '一郎', '美咲', '健太', 'あかり', '大輔', '優子'];
 
-        for ($i = 1; $i <= 20; $i++) {
+        for ($i = 1; $i <= 32; $i++) {
             $contacts[] = [
                 'category_id' => $categories->random()->id,
                 'first_name'  => $firstNames[array_rand($firstNames)],
@@ -76,7 +76,7 @@ class ContactSeeder extends Seeder
                 'gender'      => rand(1, 3),
                 'email'       => 'test' . $i . '@example.com',
                 'tel'         => '090-' . rand(1000,9999) . '-' . rand(1000,9999),
-                'address'     => '東京都渋谷区神宮前' . rand(1, 9) . '-1-' . rand(1, 20),
+                'address'     => '東京都渋谷区神宮前' . rand(1, 9) . '-1-' . rand(1, 32),
                 'building'    => rand(0,1) ? 'ビル' . rand(100, 999) : null,
                 'detail'      => 'これはテスト' . $i . '番目のお問い合わせ内容です。商品に関する質問があります。',
             ];

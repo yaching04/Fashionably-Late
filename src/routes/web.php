@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 // お問い合わせフォーム関連
-Route::prefix('contacts')->name('contacts.')->group(function () {
+Route::name('contacts.')->group(function () {
 
     // お問い合わせ入力画面
     Route::get('/', [ContactController::class, 'index'])->name('index');
