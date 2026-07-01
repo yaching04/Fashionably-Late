@@ -55,8 +55,17 @@ Route::prefix('admin')->name('admin.')->middleware('auth')
     // お問い合わせ詳細
     Route::get('/contacts/{contact}', [AdminController::class, 'show'])->name('contacts.show');
 
+    // 検索
+    Route::get('/search', [AdminController::class, 'index'])->name('search');
+
+    // 検索リセット
+    Route::get('/reset', [AdminController::class, 'index'])->name('reset');
+
+    // お問い合わせ詳細
+    Route::get('/contacts/{contact}', [AdminController::class, 'show'])->name('contacts.show');
+
     // お問い合わせ削除
-    Route::delete('/contacts/{contact}', [AdminController::class, 'destroy'])->name('contacts.destroy');
+    Route::delete('/delete/{contact}', [AdminController::class, 'destroy'])->name('contacts.delete');
 
     // CSVエクスポート（後で実装）
     Route::get('/export', [AdminController::class, 'export'])->name('export');

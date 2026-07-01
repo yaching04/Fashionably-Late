@@ -17,7 +17,7 @@
 
             {{-- 検索フォーム --}}
             <div class="search-area">
-                <form action="{{ route('admin.index') }}" method="GET" class="search-form">
+                <form action="{{ route('admin.search') }}" method="GET" class="search-form">
                     <div class="search-row">
                         <input type="text" name="search" value="{{ request('search') }}"
                             placeholder="名前またはメールアドレスを入力してください" class="search-input">
@@ -42,7 +42,7 @@
                         <input type="date" name="date_from" value="{{ request('date_from') }}" class="search-date">
 
                         <button type="submit" class="btn btn-search">検索</button>
-                        <a href="{{ route('admin.index') }}" class="btn btn-reset">リセット</a>
+                        <a href="{{ route('admin.reset') }}" class="btn btn-reset">リセット</a>
                     </div>
                 </form>
             </div>
@@ -300,7 +300,7 @@
     function deleteContact() {
         if (!currentContactId) return;
 
-        fetch(`/admin/contacts/${currentContactId}`, {
+        fetch(`/admin/delete/${currentContactId}`, {
             method: 'DELETE',
             headers: {
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
