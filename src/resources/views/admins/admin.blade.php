@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 @endsection
 
@@ -134,14 +135,23 @@
         </div>
     </div>
 
-    <!-- モーダル（重らなる-->
+    <!-- モーダル -->
     <div id="contactModal" class="modal" style="display: none;">
         <div class="modal-content">
-            <!-- 部クローズボタン -->
+            <!-- クローズボタン -->
             <button class="modal-close" onclick="closeModal()">×</button>
 
             <div class="modal-body" id="modalBody">
                 <!-- 詳細内容がここに実装される -->
+            </div>
+
+            <!-- 削除ボタン -->
+            <div class="modal-footer" style="text-align: right; margin-top: 20px; padding: 15px 0; border-top: 1px solid #eee;">
+                <button onclick="deleteContact()"
+                        class="btn btn-delete"
+                        style="background-color: #e63939; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer;">
+                    削除する
+                </button>
             </div>
         </div>
     </div>
@@ -231,63 +241,87 @@
         }
     </style>
 
+
     <script>
-        function openModal(contactId) {
-            fetch(`/admin/contacts/${contactId}`)
-                .then(response => response.json())
-                .then(data => {
-                    const html = `
-                        <div class="detail-row">
-                            <div class="detail-label">お名前</div>
-                            <div class="detail-value">${data.first_name} ${data.last_name}</div>
-                        </div>
-                        <div class="detail-row">
-                            <div class="detail-label">性別</div>
-                            <div class="detail-value">${data.gender}</div>
-                        </div>
-                        <div class="detail-row">
-                            <div class="detail-label">メールアドレス</div>
-                            <div class="detail-value">${data.email}</div>
-                        </div>
-                        <div class="detail-row">
-                            <div class="detail-label">電話番号</div>
-                            <div class="detail-value">${data.tel}</div>
-                        </div>
-                        <div class="detail-row">
-                            <div class="detail-label">住所</div>
-                            <div class="detail-value">${data.address}</div>
-                        </div>
-                        <div class="detail-row">
-                            <div class="detail-label">建物名</div>
-                            <div class="detail-value">${data.building}</div>
-                        </div>
-                        <div class="detail-row">
-                            <div class="detail-label">お問い合わせ種別</div>
-                            <div class="detail-value">${data.category}</div>
-                        </div>
-                        <div class="detail-row">
-                            <div class="detail-label">お問い合わせ内容</div>
-                            <div class="detail-value detail-text">${data.detail}</div>
-                        </div>
-                    `;
-                    document.getElementById('modalBody').innerHTML = html;
-                    document.getElementById('contactModal').style.display = 'flex';
-                })
-                .catch(error => {
-                    console.error('エラー:', error);
-                    alert('データの取得に失敗しました: ' + error.message);
-                });
-        }
+    let currentContactId = null;
 
-        function closeModal() {
-            document.getElementById('contactModal').style.display = 'none';
-        }
+    function openModal(contactId) {
+        currentContactId = contactId;
 
-        window.addEventListener('click', function(event) {
-            const modal = document.getElementById('contactModal');
-            if (event.target === modal) {
-                closeModal();
+        fetch(`/admin/contacts/${contactId}`)
+            .then(response => response.json())
+            .then(data => {
+                const html = `
+                    <div class="detail-row">
+                        <div class="detail-label">お名前</div>
+                        <div class="detail-value">${data.first_name} ${data.last_name}</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">性別</div>
+                        <div class="detail-value">${data.gender}</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">メールアドレス</div>
+                        <div class="detail-value">${data.email}</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">電話番号</div>
+                        <div class="detail-value">${data.tel}</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">住所</div>
+                        <div class="detail-value">${data.address}</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">建物名</div>
+                        <div class="detail-value">${data.building}</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">お問い合わせ種別</div>
+                        <div class="detail-value">${data.category}</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">お問い合わせ内容</div>
+                        <div class="detail-value detail-text">${data.detail}</div>
+                    </div>
+                `;
+                document.getElementById('modalBody').innerHTML = html;
+                document.getElementById('contactModal').style.display = 'flex';
+            })
+            .catch(error => {
+                console.error('エラー:', error);
+            });
+    }
+
+    function closeModal() {
+        document.getElementById('contactModal').style.display = 'none';
+    }
+
+    function deleteContact() {
+        if (!currentContactId) return;
+
+        fetch(`/admin/contacts/${currentContactId}`, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             }
+        })
+        .then(response => {
+            closeModal();
+            location.reload();  // 成功・失敗問わず一覧を更新
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            closeModal();
+            location.reload();  // エラー時も更新
         });
-    </script>
+    }
+
+    window.addEventListener('click', function(event) {
+        const modal = document.getElementById('contactModal');
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+</script>
 @endsection

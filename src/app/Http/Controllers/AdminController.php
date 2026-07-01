@@ -87,10 +87,65 @@ class AdminController extends Controller
     }
 
     /**
-     * CSVエクスポート（後で実装）
-     */
-    public function export()
-    {
-        return redirect()->back()->with('info', 'CSVエクスポート機能は現在準備中です。');
+ * CSVエクスポート
+ */
+public function export()
+{
+    $contacts = Contact::with('category')->latest()->get();
+
+    $csvHeader = [
+        'ID',
+        'お名前',
+        '性別',
+        'メールアドレス',
+        '電話番号',
+        '住所',
+        '建物名',
+        'お問い合わせ種別',
+        'お問い合わせ内容',
+        '投稿日時'
+    ];
+
+    $csvData = [];
+
+    foreach ($contacts as $contact) {
+        $csvData[] = [
+            $contact->id,
+            $contact->first_name . ' ' . $contact->last_name,
+            match($contact->gender) {
+                1 => '男性',
+                2 => '女性',
+                3 => 'その他',
+                default => '不明'
+            },
+            $contact->email,
+            $contact->tel,
+            $contact->address,
+            $contact->building ?? 'なし',
+            $contact->category->content ?? '未分類',
+            $contact->detail,
+            $contact->created_at->format('Y-m-d H:i:s')
+        ];
     }
+
+    $filename = 'contacts_' . now()->format('Ymd_His') . '.csv';
+
+    $headers = [
+        'Content-Type' => 'text/csv; charset=utf-8',
+        'Content-Disposition' => 'attachment; filename="' . $filename . '"',
+    ];
+
+    $callback = function () use ($csvHeader, $csvData) {
+        $file = fopen('php://output', 'w');
+        fputcsv($file, $csvHeader);
+
+        foreach ($csvData as $row) {
+            fputcsv($file, $row);
+        }
+
+        fclose($file);
+    };
+
+    return response()->stream($callback, 200, $headers);
+}
 }
