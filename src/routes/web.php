@@ -67,6 +67,6 @@ Route::prefix('admin')->name('admin.')->middleware('auth')
     // お問い合わせ削除
     Route::delete('/delete/{contact}', [AdminController::class, 'destroy'])->name('contacts.delete');
 
-    // CSVエクスポート（後で実装）
+    // CSVエクスポート
     Route::get('/export', [AdminController::class, 'export'])->name('export');
 });

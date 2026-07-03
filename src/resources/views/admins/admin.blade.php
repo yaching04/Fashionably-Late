@@ -146,11 +146,11 @@
             </div>
 
             <!-- 削除ボタン -->
-            <div class="modal-footer" style="text-align: right; margin-top: 20px; padding: 15px 0; border-top: 1px solid #eee;">
+            <div class="modal-footer" style="text-align: center; margin-top: 30px; padding: 15px 0;">
                 <button onclick="deleteContact()"
                         class="btn btn-delete"
                         style="background-color: #e63939; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer;">
-                    削除する
+                    削除
                 </button>
             </div>
         </div>
@@ -163,7 +163,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.01);
             z-index: 1000;
             display: flex;
             align-items: center;
@@ -172,11 +172,11 @@
 
         .modal-content {
             background-color: white;
-            padding: 30px;
+            padding: 50px;
             border-radius: 8px;
             width: 90%;
-            max-width: 600px;
-            max-height: 90vh;
+            max-width: 800px;
+            max-height: 100vh;
             overflow-y: auto;
             position: relative;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -185,12 +185,13 @@
         .modal-close {
             position: absolute;
             top: 15px;
-            left: 15px;
+            right: 15px;
             background: none;
-            border: none;
+            border: #8d8d8d solid 1px;
+            border-radius: 50%;
             font-size: 28px;
             cursor: pointer;
-            color: #666;
+            color: #8d8d8d;
             padding: 0;
             width: 30px;
             height: 30px;
@@ -229,7 +230,6 @@
         .detail-value {
             flex: 1;
             color: #333;
-            line-height: 1.65;
         }
 
         .detail-text {
@@ -237,7 +237,6 @@
             background-color: #f9f9f9;
             padding: 18px;
             border-radius: 8px;
-            border-left: 5px solid #a78888;
         }
     </style>
 
